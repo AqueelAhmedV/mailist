@@ -9,11 +9,19 @@ const bodyParser = require('body-parser')
 const app = express();
 
 app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://mailist-admin.vercel.app");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
+  // res.header("Access-Control-Allow-Origin", "https://mailist-admin.vercel.app");
+  // res.header(
+  //   "Access-Control-Allow-Headers",
+  //   "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  // );
+  const corsWhitelist = [
+        'https://mailist-admin.vercel.app',
+        'https://collection-ultimate.blogspot.com'
+    ];
+    if (corsWhitelist.indexOf(req.headers.origin) !== -1) {
+        res.header('Access-Control-Allow-Origin', req.headers.origin);
+        res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+    }
   next();
 });
 
