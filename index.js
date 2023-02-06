@@ -10,6 +10,7 @@ const app = express();
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "https://mailist-admin.vercel.app");
+  res.header("Access-Control-Allow-Origin", "https://collection-ultimate.blogspot.com")
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
